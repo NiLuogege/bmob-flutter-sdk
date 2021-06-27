@@ -36,7 +36,6 @@ class Blog extends BmobObject{
 
   @override
   Map<String, dynamic> getParams() {
-    // TODO: implement getParams
     return toJson();
   }
 

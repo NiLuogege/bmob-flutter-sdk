@@ -54,8 +54,8 @@ class BmobBatch {
               Bmob.BMOB_API_CLASSES + bmobObject.runtimeType.toString();
         }
 
-        Map body = bmobObject.getParams();
-        Map tmp = bmobObject.getParams();
+        Map<String, dynamic> body = bmobObject.getParams();
+        Map<String, dynamic> tmp = bmobObject.getParams();
         tmp.forEach((key, value) {
           if (value == null) {
             body.remove(key);

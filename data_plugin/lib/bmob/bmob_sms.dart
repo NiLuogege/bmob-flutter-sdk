@@ -25,7 +25,7 @@ class BmobSms {
 
   ///查询多条数据
   Future<BmobHandled> verifySmsCode(smsCode) async {
-    Map params = getParams();
+    Map<String, dynamic> params = getParams();
     params.remove("template");
     Map<String, dynamic> responseData = await BmobDio.getInstance()
         .post(Bmob.BMOB_API_VERIFY_SMS_CODE + smsCode, data: params);
