@@ -69,8 +69,6 @@ abstract class BmobObject {
 
   BmobObject();
 
-  Map<String, dynamic> getParams();
-
   ///新增一条数据
   Future<BmobSaved> save() async {
     Map<String, dynamic> map = getParams();
@@ -202,4 +200,6 @@ abstract class BmobObject {
     String params = json.encode(data);
     return params;
   }
+
+  Map<String, dynamic> getParams();
 }
