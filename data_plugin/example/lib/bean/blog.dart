@@ -35,7 +35,7 @@ class Blog extends BmobObject{
   Map<String, dynamic> toJson() => _$BlogToJson(this);
 
   @override
-  Map getParams() {
+  Map<String, dynamic> getParams() {
     // TODO: implement getParams
     return toJson();
   }

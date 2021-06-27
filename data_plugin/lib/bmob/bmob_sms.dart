@@ -42,9 +42,9 @@ class BmobSms {
 
 
   ///获取请求参数
-  Map getParams() {
-    Map map = toJson();
-    Map params = toJson();
+  Map<String, dynamic> getParams() {
+    Map<String, dynamic> map = toJson();
+    Map<String, dynamic> params = toJson();
     map.forEach((k, v) {
       if (v == null) {
         params.remove(k);

@@ -231,7 +231,7 @@ class BmobUser extends BmobObject {
   }
 
   @override
-  Map getParams() {
+  Map<String, dynamic> getParams() {
     // TODO: implement getJson
     Map<String, dynamic> map = toJson();
     Map<String, dynamic> data = new Map();

@@ -370,7 +370,7 @@ class BmobQuery<T> {
   Map<String, dynamic> toJson() => _$BmobQueryToJson(this);
 
   ///获取请求参数
-  Map getParams() {
+  Map<String, dynamic> getParams() {
     Map map = toJson();
     Map params = toJson();
     map.forEach((k, v) {
