@@ -11,22 +11,16 @@ Blog _$BlogFromJson(Map<String, dynamic> json) {
     ..createdAt = json['createdAt'] as String
     ..updatedAt = json['updatedAt'] as String
     ..objectId = json['objectId'] as String
-    ..ACL = json['ACL'] as Map<String, dynamic>
+    ..ACL = (json['ACL'] as Map<String, dynamic>).map(
+      (k, e) => MapEntry(k, e as Object),
+    )
     ..title = json['title'] as String
     ..content = json['content'] as String
-    ..author = json['author'] == null
-        ? null
-        : BmobUser.fromJson(json['author'] as Map<String, dynamic>)
+    ..author = BmobUser.fromJson(json['author'] as Map<String, dynamic>)
     ..like = json['like'] as int
-    ..addr = json['addr'] == null
-        ? null
-        : BmobGeoPoint.fromJson(json['addr'] as Map<String, dynamic>)
-    ..time = json['time'] == null
-        ? null
-        : BmobDate.fromJson(json['time'] as Map<String, dynamic>)
-    ..pic = json['pic'] == null
-        ? null
-        : BmobFile.fromJson(json['pic'] as Map<String, dynamic>);
+    ..addr = BmobGeoPoint.fromJson(json['addr'] as Map<String, dynamic>)
+    ..time = BmobDate.fromJson(json['time'] as Map<String, dynamic>)
+    ..pic = BmobFile.fromJson(json['pic'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$BlogToJson(Blog instance) => <String, dynamic>{
@@ -40,5 +34,5 @@ Map<String, dynamic> _$BlogToJson(Blog instance) => <String, dynamic>{
       'like': instance.like,
       'addr': instance.addr,
       'time': instance.time,
-      'pic': instance.pic
+      'pic': instance.pic,
     };

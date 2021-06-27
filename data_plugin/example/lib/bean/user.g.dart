@@ -11,7 +11,9 @@ User _$UserFromJson(Map<String, dynamic> json) {
     ..createdAt = json['createdAt'] as String
     ..updatedAt = json['updatedAt'] as String
     ..objectId = json['objectId'] as String
-    ..ACL = json['ACL'] as Map<String, dynamic>
+    ..ACL = (json['ACL'] as Map<String, dynamic>).map(
+      (k, e) => MapEntry(k, e as Object),
+    )
     ..username = json['username'] as String
     ..password = json['password'] as String
     ..email = json['email'] as String
@@ -38,5 +40,5 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'sessionToken': instance.sessionToken,
       'age': instance.age,
       'gender': instance.gender,
-      'nickname': instance.nickname
+      'nickname': instance.nickname,
     };
