@@ -5,7 +5,7 @@ import 'package:data_plugin/bmob/response/bmob_error.dart';
 import 'package:data_plugin/bmob/realtime/change.dart';
 
 class RealTimeDataManager {
-  static RealTimeDataManager instance;
+  static RealTimeDataManager? instance;
 
   RealTimeDataManager();
 
@@ -14,7 +14,7 @@ class RealTimeDataManager {
     if (instance == null) {
       instance = new RealTimeDataManager();
     }
-    return instance;
+    return instance!;
   }
 
   ///数据监听

@@ -25,7 +25,7 @@ class BmobRole extends BmobObject {
   BmobRole();
 
   @override
-  Map getParams() {
+  Map<String, dynamic> getParams() {
     // TODO: implement getParams
     return toJson(this);
   }

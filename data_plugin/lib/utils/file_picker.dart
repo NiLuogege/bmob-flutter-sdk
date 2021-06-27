@@ -24,7 +24,7 @@ class FilePicker {
   /// If provided, it will be use the `FileType.CUSTOM` for that [fileExtension].
   /// If not, `FileType.ANY` will be used and any combination of files can be multi picked at once.
   static Future<Map<String, String>> getMultiFilePath(
-          {FileType type = FileType.ANY, String fileExtension}) async =>
+          {FileType type = FileType.ANY, String fileExtension=""}) async =>
       await _getPath(_handleType(type, fileExtension), true);
 
   /// Returns an absolute file path from the calling platform.
@@ -33,15 +33,15 @@ class FilePicker {
   /// Can be used a custom file type with `FileType.CUSTOM`. A [fileExtension] must be provided (e.g. PDF, SVG, etc.)
   /// Defaults to `FileType.ANY` which will display all file types.
   static Future<String> getFilePath(
-          {FileType type = FileType.ANY, String fileExtension}) async =>
+          {FileType type = FileType.ANY, String fileExtension=""}) async =>
       await _getPath(_handleType(type, fileExtension), false);
 
   /// Returns a `File` object from the selected file path.
   ///
   /// This is an utility method that does the same of `getFilePath()` but saving some boilerplate if
   /// you are planing to create a `File` for the returned path.
-  static Future<File> getFile(
-      {FileType type = FileType.ANY, String fileExtension}) async {
+  static Future<File?> getFile(
+      {FileType type = FileType.ANY, String fileExtension=""}) async {
     final String filePath =
         await _getPath(_handleType(type, fileExtension), false);
     return filePath != null ? File(filePath) : null;

@@ -82,7 +82,7 @@ class BmobQuery<T> {
 
   //复合查询条件or
   BmobQuery or(List<BmobQuery<T>> queries){
-    List<Map<String, dynamic>> list = List();
+    List<Map<String, dynamic>> list = [];
     for(BmobQuery<T> bmobQuery in queries){
       list.add(bmobQuery.where);
     }
@@ -93,7 +93,7 @@ class BmobQuery<T> {
 
   //复合查询条件and
   BmobQuery and(List<BmobQuery<T>> queries) {
-    List<Map<String, dynamic>> list = List();
+    List<Map<String, dynamic>> list = [];
     for(BmobQuery<T> bmobQuery in queries){
       list.add(bmobQuery.where);
     }
@@ -103,7 +103,7 @@ class BmobQuery<T> {
 
 
   BmobQuery addWhereContains(String key, Object value) {
-    String regex = "\\Q"+value+"\\E";
+    String regex = "\\Q"+value.toString()+"\\E";
     addWhereMatches(key, regex);
     return this;
   }
@@ -176,7 +176,7 @@ class BmobQuery<T> {
     if (where.isNotEmpty) {
       url = url + "where=" + json.encode(where);
     }
-    Map map = await BmobDio.getInstance().get(url, data: getParams());
+    Map<String, dynamic> map = await BmobDio.getInstance().get(url, data: getParams());
     print(map);
     BmobResults bmobResults = BmobResults.fromJson(map);
     return bmobResults.count;
@@ -217,7 +217,7 @@ class BmobQuery<T> {
     return statistics;
   }
 
-  void addCondition(String key, String condition, Object value) {
+  void addCondition(String key, String? condition, Object value) {
     if (condition == null) {
       if (value is BmobUser) {
         BmobUser bmobUser = value;
@@ -356,7 +356,7 @@ class BmobQuery<T> {
       url = url + "where=" + json.encode(where);
     }
     url = url + getStatistics();
-    Map map = await BmobDio.getInstance().get(url, data: getParams());
+    Map<String, dynamic> map = await BmobDio.getInstance().get(url, data: getParams());
     BmobResults bmobResults = BmobResults.fromJson(map);
     print(bmobResults.results);
     return bmobResults.results;

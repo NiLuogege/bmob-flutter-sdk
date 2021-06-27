@@ -55,7 +55,7 @@ abstract class BmobObject {
 
   //访问控制权限
   // ignore: non_constant_identifier_names
-  Map<String, Object> ACL;
+  Map<String, dynamic> ACL;
 
   void setAcl(BmobAcl bmobAcl) {
     this.ACL = bmobAcl.acl;
@@ -69,7 +69,7 @@ abstract class BmobObject {
 
   BmobObject();
 
-  Map getParams();
+  Map<String, dynamic> getParams();
 
   ///新增一条数据
   Future<BmobSaved> save() async {
@@ -82,7 +82,7 @@ abstract class BmobObject {
         tableName = "_Installation";
         break;
     }
-    Map responseData = await BmobDio.getInstance()
+    Map<String, dynamic> responseData = await BmobDio.getInstance()
         .post(Bmob.BMOB_API_CLASSES + tableName, data: params);
     BmobSaved bmobSaved = BmobSaved.fromJson(responseData);
     return bmobSaved;
@@ -100,7 +100,7 @@ abstract class BmobObject {
       String params = getParamsJsonFromParamsMap(map);
       print(params);
       String tableName = BmobUtils.getTableName(this);
-      Map responseData = await BmobDio.getInstance().put(
+      Map<String, dynamic> responseData = await BmobDio.getInstance().put(
           Bmob.BMOB_API_CLASSES + tableName + Bmob.BMOB_API_SLASH + objectId,
           data: params);
       BmobUpdated bmobUpdated = BmobUpdated.fromJson(responseData);
@@ -118,7 +118,7 @@ abstract class BmobObject {
       throw bmobError;
     } else {
       String tableName = BmobUtils.getTableName(this);
-      Map responseData = await BmobDio.getInstance().delete(
+      Map<String, dynamic> responseData = await BmobDio.getInstance().delete(
           Bmob.BMOB_API_CLASSES + tableName + Bmob.BMOB_API_SLASH + objectId);
       BmobHandled bmobHandled = BmobHandled.fromJson(responseData);
       return bmobHandled;
@@ -140,7 +140,7 @@ abstract class BmobObject {
       Map<String, dynamic> params = Map();
       params[fieldName] = delete;
       String body = json.encode(params);
-      Map responseData = await BmobDio.getInstance().put(
+      Map<String, dynamic> responseData = await BmobDio.getInstance().put(
           Bmob.BMOB_API_CLASSES + tableName + Bmob.BMOB_API_SLASH + objectId,
           data: "$body");
       BmobUpdated bmobUpdated = BmobUpdated.fromJson(responseData);

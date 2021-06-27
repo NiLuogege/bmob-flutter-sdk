@@ -23,7 +23,7 @@ class BmobInstallation extends BmobObject {
 
 
   @override
-  Map getParams() {
+  Map<String, dynamic> getParams() {
     return toJson();
   }
 }
