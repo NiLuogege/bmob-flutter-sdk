@@ -18,25 +18,25 @@ part 'bmob_query.g.dart';
 ///查询数据，包括单条数据查询和多条数据查询
 @JsonSerializable()
 class BmobQuery<T> {
-  String include;
-  int limit;
-  int skip;
-  String order;
-  int count;
+  String include ="";
+  int limit=0;
+  int skip=0;
+  String order ="";
+  int count=0;
 
-  String c;
+  String c ="";
 
-  Map<String, dynamic> where;
+  Map<String, dynamic> where={};
 
-  Map<String, dynamic> having;
+  Map<String, dynamic> having={};
 
   /// 统计查询
-  String groupby;
-  String sum;
-  String average;
-  String max;
-  String min;
-  bool groupcount;
+  String groupby ="";
+  String sum ="";
+  String average ="";
+  String max ="";
+  String min ="";
+  bool groupcount =false;
 
   BmobQuery() {
     where = Map();
@@ -371,8 +371,8 @@ class BmobQuery<T> {
 
   ///获取请求参数
   Map<String, dynamic> getParams() {
-    Map map = toJson();
-    Map params = toJson();
+    Map<String, dynamic> map = toJson();
+    Map<String, dynamic> params = toJson();
     map.forEach((k, v) {
       if (v == null) {
         params.remove(k);

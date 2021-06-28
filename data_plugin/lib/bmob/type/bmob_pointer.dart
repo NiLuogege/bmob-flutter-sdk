@@ -11,8 +11,8 @@ class BmobPointer {
 
   @JsonKey(name: "__type")
   String type = "Pointer";
-  String className;
-  String objectId;
+  String? className ="";
+  String? objectId ="";
 
   BmobPointer();
 }

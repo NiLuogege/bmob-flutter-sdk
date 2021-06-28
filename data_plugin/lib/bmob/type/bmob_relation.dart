@@ -13,10 +13,10 @@ class BmobRelation {
   Map<String, dynamic> toJson() => _$BmobRelationToJson(this);
 
   @JsonKey(name: "__op")
-  String op;
+  String? op ="";
 
   //关联关系列表
-  List<Map<String, dynamic>> objects;
+  List<Map<String, dynamic>> objects=[];
 
   BmobRelation() {
     objects = [];

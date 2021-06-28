@@ -10,8 +10,8 @@ part 'bmob_sms.g.dart';
 
 @JsonSerializable()
 class BmobSms {
-  String mobilePhoneNumber;
-  String template;
+  String mobilePhoneNumber="";
+  String template="";
 
   BmobSms();
 
