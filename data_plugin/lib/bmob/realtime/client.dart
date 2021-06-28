@@ -189,7 +189,7 @@ class Client {
             Message message = Message.fromJson(map);
             ///{"appKey":"12784168944a56ae41c4575686b7b332","tableName":"Blog","objectId":"","action":"updateTable","data":{"author":"7c7fd3afe1","content":"博客内容","createdAt":"2019-04-26 15:55:12","like":77,"objectId":"8913e0b65f","title":"博客标题","updatedAt":"2019-04-26 15:55:12"}}
             ///服务端发送消息给客户端，数据变化
-            if (message.name.isNotEmpty && message.name == "server_pub") {
+            if (message.name!.isNotEmpty && message.name == "server_pub") {
               String arg = message.args[0];
               Map<String, dynamic> map = json.decode(arg);
               Change change = Change.fromJson(map);

@@ -5,7 +5,7 @@ part 'bmob_date.g.dart';
 
 @JsonSerializable()
 class BmobDate {
-  String iso;
+  String iso ="";
   @JsonKey(name: '__type')
   String type = "Date";
 

@@ -13,13 +13,13 @@ part 'bmob_user.g.dart';
 
 @JsonSerializable()
 class BmobUser extends BmobObject {
-  String username;
-  String password;
-  String email;
+  String username ="";
+  String password ="";
+  String email ="";
   bool emailVerified = false;
-  String mobilePhoneNumber;
-  bool mobilePhoneNumberVerified;
-  String sessionToken;
+  String mobilePhoneNumber ="";
+  bool mobilePhoneNumberVerified =false;
+  String sessionToken ="";
 
   BmobUser();
 

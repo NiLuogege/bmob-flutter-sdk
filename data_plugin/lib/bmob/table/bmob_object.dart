@@ -21,7 +21,7 @@ abstract class BmobObject {
 
 
   //创建时间
-  String createdAt;
+  String createdAt ="";
 
   void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
@@ -32,7 +32,7 @@ abstract class BmobObject {
   }
 
   //更新时间
-  String updatedAt;
+  String updatedAt ="";
 
   void setUpdatedAt(String updatedAt) {
     this.updatedAt = updatedAt;
@@ -43,7 +43,7 @@ abstract class BmobObject {
   }
 
   //唯一标志
-  String objectId;
+  String objectId ="";
 
   void setObjectId(String objectId) {
     this.objectId = objectId;
@@ -55,7 +55,7 @@ abstract class BmobObject {
 
   //访问控制权限
   // ignore: non_constant_identifier_names
-  Map<String, dynamic> ACL;
+  Map<String, dynamic> ACL = {};
 
   void setAcl(BmobAcl bmobAcl) {
     this.ACL = bmobAcl.acl;
