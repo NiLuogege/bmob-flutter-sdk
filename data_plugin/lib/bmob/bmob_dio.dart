@@ -97,12 +97,12 @@ class BmobDio {
 
   ///GET请求
   Future<dynamic> get(path, {data, cancelToken}) async {
-    options?.headers.addAll(getHeaders(path, ""));
+    options.headers.addAll(getHeaders(path, ""));
 
-    var requestUrl = options!.baseUrl + path;
-    var headers = options?.headers.toString();
+    var requestUrl = options.baseUrl + path;
+    var headers = options.headers.toString();
     print('Get请求启动! url：$requestUrl ,body: $data ,headers:$headers');
-    Response response = await dio!.get(
+    Response response = await dio.get(
       requestUrl,
       queryParameters: data,
       cancelToken: cancelToken,
