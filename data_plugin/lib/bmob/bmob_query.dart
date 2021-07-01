@@ -28,15 +28,15 @@ class BmobQuery<T> {
 
   Map<String, dynamic> where={};
 
-  Map<String, dynamic>? having={};
+  Map<String, dynamic>? having;
 
   /// 统计查询
-  String? groupby ="";
-  String? sum ="";
-  String? average ="";
-  String? max ="";
-  String? min ="";
-  bool? groupcount =false;
+  String? groupby;
+  String? sum;
+  String? average;
+  String? max;
+  String? min;
+  bool? groupcount;
 
   BmobQuery() {
     where = Map();
