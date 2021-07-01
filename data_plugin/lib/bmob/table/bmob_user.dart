@@ -74,13 +74,13 @@ class BmobUser extends BmobObject {
     //Map转String
     //发送请求
     Map<String, dynamic> result = await BmobDio.getInstance().get(Bmob.BMOB_API_LOGIN + getUrlParams(data));
-    print('12345' + result.toString());
-    if (result.containsKey('emailVerified') && (result['emailVerified'] as String).isEmpty) {
-      result['emailVerified'] = false;
-    }
-    if (result.containsKey('mobilePhoneNumberVerified') && (result['mobilePhoneNumberVerified'] as String).isEmpty) {
-      result['mobilePhoneNumberVerified'] = false;
-    }
+    print('result=' + result.toString());
+    // if (result.containsKey('emailVerified') && (result['emailVerified'] as String).isEmpty) {
+    //   result['emailVerified'] = false;
+    // }
+    // if (result.containsKey('mobilePhoneNumberVerified') && (result['mobilePhoneNumberVerified'] as String).isEmpty) {
+    //   result['mobilePhoneNumberVerified'] = false;
+    // }
     BmobUser bmobUser = BmobUser.fromJson(result);
     // obtain shared preferences
     SharedPreferences prefs = await SharedPreferences.getInstance();
