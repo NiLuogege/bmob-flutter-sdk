@@ -28,15 +28,15 @@ class BmobQuery<T> {
 
   Map<String, dynamic> where={};
 
-  Map<String, dynamic> having={};
+  Map<String, dynamic>? having={};
 
   /// 统计查询
-  String groupby ="";
-  String sum ="";
-  String average ="";
-  String max ="";
-  String min ="";
-  bool groupcount =false;
+  String? groupby ="";
+  String? sum ="";
+  String? average ="";
+  String? max ="";
+  String? min ="";
+  bool? groupcount =false;
 
   BmobQuery() {
     where = Map();
@@ -188,7 +188,7 @@ class BmobQuery<T> {
     return this;
   }
 
-  String addStatistics(String key, Object value) {
+  String addStatistics(String key, Object? value) {
     if (value == null) {
       return "";
     }
