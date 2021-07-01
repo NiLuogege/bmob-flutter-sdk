@@ -13,19 +13,21 @@ part 'bmob_user.g.dart';
 
 @JsonSerializable()
 class BmobUser extends BmobObject {
-  String username ="";
-  String password ="";
-  String email ="";
-  bool emailVerified = false;
-  String mobilePhoneNumber ="";
-  bool mobilePhoneNumberVerified =false;
-  String sessionToken ="";
+  String? username;
+  String? password;
+  String? email;
+
+  bool? emailVerified;
+
+  String? mobilePhoneNumber;
+  bool? mobilePhoneNumberVerified;
+
+  String? sessionToken;
 
   BmobUser();
 
   //此处与类名一致，由指令自动生成代码
-  factory BmobUser.fromJson(Map<String, dynamic> json) =>
-      _$BmobUserFromJson(json);
+  factory BmobUser.fromJson(Map<String, dynamic> json) => _$BmobUserFromJson(json);
 
   //此处与类名一致，由指令自动生成代码
   Map<String, dynamic> toJson() => _$BmobUserToJson(this);
@@ -48,8 +50,7 @@ class BmobUser extends BmobObject {
     //Map转String
     String params = json.encode(data);
     //发送请求
-    Map<String, dynamic> responseData =
-        await BmobDio.getInstance().post(Bmob.BMOB_API_USERS, data: params);
+    Map<String, dynamic> responseData = await BmobDio.getInstance().post(Bmob.BMOB_API_USERS, data: params);
     BmobRegistered bmobRegistered = BmobRegistered.fromJson(responseData);
     BmobDio.getInstance().setSessionToken(bmobRegistered.sessionToken);
     return bmobRegistered;
@@ -72,14 +73,12 @@ class BmobUser extends BmobObject {
     });
     //Map转String
     //发送请求
-    Map<String, dynamic>  result = await BmobDio.getInstance()
-        .get(Bmob.BMOB_API_LOGIN + getUrlParams(data));
-    print('12345'+result.toString());
+    Map<String, dynamic> result = await BmobDio.getInstance().get(Bmob.BMOB_API_LOGIN + getUrlParams(data));
+    print('12345' + result.toString());
     if (result.containsKey('emailVerified') && (result['emailVerified'] as String).isEmpty) {
       result['emailVerified'] = false;
     }
-    if (result.containsKey('mobilePhoneNumberVerified') && (result['mobilePhoneNumberVerified'] as String)
-        .isEmpty) {
+    if (result.containsKey('mobilePhoneNumberVerified') && (result['mobilePhoneNumberVerified'] as String).isEmpty) {
       result['mobilePhoneNumberVerified'] = false;
     }
     BmobUser bmobUser = BmobUser.fromJson(result);
@@ -111,8 +110,8 @@ class BmobUser extends BmobObject {
     });
     //Map转String
     //发送请求
-    Map<String, dynamic> result = await BmobDio.getInstance()
-        .post(Bmob.BMOB_API_USERS, data: getParamsJsonFromParamsMap(data));
+    Map<String, dynamic> result =
+        await BmobDio.getInstance().post(Bmob.BMOB_API_USERS, data: getParamsJsonFromParamsMap(data));
     print(result);
     BmobUser bmobUser = BmobUser.fromJson(result);
     BmobDio.getInstance().setSessionToken(bmobUser.sessionToken);
@@ -136,9 +135,8 @@ class BmobUser extends BmobObject {
     });
     //Map转String
     //发送请求
-    Map<String, dynamic> result = await BmobDio.getInstance().post(
-        Bmob.BMOB_API_REQUEST_PASSWORD_RESET,
-        data: getParamsJsonFromParamsMap(data));
+    Map<String, dynamic> result =
+        await BmobDio.getInstance().post(Bmob.BMOB_API_REQUEST_PASSWORD_RESET, data: getParamsJsonFromParamsMap(data));
     print(result);
     BmobHandled bmobHandled = BmobHandled.fromJson(result);
     return bmobHandled;
@@ -162,9 +160,7 @@ class BmobUser extends BmobObject {
     //Map转String
     //发送请求
     Map<String, dynamic> result = await BmobDio.getInstance().put(
-        Bmob.BMOB_API_REQUEST_PASSWORD_BY_SMS_CODE +
-            Bmob.BMOB_API_SLASH +
-            smsCode,
+        Bmob.BMOB_API_REQUEST_PASSWORD_BY_SMS_CODE + Bmob.BMOB_API_SLASH + smsCode,
         data: getParamsJsonFromParamsMap(data));
     print(result);
     BmobHandled bmobHandled = BmobHandled.fromJson(result);
@@ -179,16 +175,15 @@ class BmobUser extends BmobObject {
 
     //Map转String
     //发送请求
-    Map<String, dynamic> result = await BmobDio.getInstance()
-        .post(Bmob.BMOB_API_REQUEST_REQUEST_EMAIL_VERIFY, data: data);
+    Map<String, dynamic> result =
+        await BmobDio.getInstance().post(Bmob.BMOB_API_REQUEST_REQUEST_EMAIL_VERIFY, data: data);
     print(result);
     BmobHandled bmobHandled = BmobHandled.fromJson(result);
     return bmobHandled;
   }
 
   ///旧密码重置密码
-  Future<BmobHandled> updateUserPassword(
-      String oldPassword, String newPassword) async {
+  Future<BmobHandled> updateUserPassword(String oldPassword, String newPassword) async {
     Map<String, dynamic> map = toJson();
     Map<String, dynamic> data = new Map();
 
@@ -207,9 +202,8 @@ class BmobUser extends BmobObject {
     });
     //Map转String
     //发送请求
-    Map<String, dynamic> result = await BmobDio.getInstance().put(
-        Bmob.BMOB_API_REQUEST_UPDATE_USER_PASSWORD + objectId,
-        data: getParamsJsonFromParamsMap(data));
+    Map<String, dynamic> result = await BmobDio.getInstance()
+        .put(Bmob.BMOB_API_REQUEST_UPDATE_USER_PASSWORD + objectId, data: getParamsJsonFromParamsMap(data));
     print(result);
     BmobHandled bmobHandled = BmobHandled.fromJson(result);
     return bmobHandled;
