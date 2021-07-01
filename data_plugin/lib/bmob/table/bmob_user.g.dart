@@ -11,16 +11,14 @@ BmobUser _$BmobUserFromJson(Map<String, dynamic> json) {
     ..createdAt = json['createdAt'] as String
     ..updatedAt = json['updatedAt'] as String
     ..objectId = json['objectId'] as String
-    ..ACL = (json['ACL'] as Map<String, dynamic>).map(
-      (k, e) => MapEntry(k, e as Object),
-    )
-    ..username = json['username'] as String
-    ..password = json['password'] as String
-    ..email = json['email'] as String
-    ..emailVerified = json['emailVerified'] as bool
-    ..mobilePhoneNumber = json['mobilePhoneNumber'] as String
-    ..mobilePhoneNumberVerified = json['mobilePhoneNumberVerified'] as bool
-    ..sessionToken = json['sessionToken'] as String;
+    ..ACL = json['ACL'] as Map<String, dynamic>
+    ..username = json['username'] as String?
+    ..password = json['password'] as String?
+    ..email = json['email'] as String?
+    ..emailVerified = json['emailVerified'] as bool?
+    ..mobilePhoneNumber = json['mobilePhoneNumber'] as String?
+    ..mobilePhoneNumberVerified = json['mobilePhoneNumberVerified'] as bool?
+    ..sessionToken = json['sessionToken'] as String?;
 }
 
 Map<String, dynamic> _$BmobUserToJson(BmobUser instance) => <String, dynamic>{

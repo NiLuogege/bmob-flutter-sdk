@@ -8,7 +8,7 @@ part of message;
 
 Message _$MessageFromJson(Map<String, dynamic> json) {
   return Message()
-    ..name = json['name'] as String
+    ..name = json['name'] as String?
     ..args = (json['args'] as List<dynamic>).map((e) => e as String).toList();
 }
 

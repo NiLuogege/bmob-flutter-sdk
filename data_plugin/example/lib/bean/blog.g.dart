@@ -11,9 +11,7 @@ Blog _$BlogFromJson(Map<String, dynamic> json) {
     ..createdAt = json['createdAt'] as String
     ..updatedAt = json['updatedAt'] as String
     ..objectId = json['objectId'] as String
-    ..ACL = (json['ACL'] as Map<String, dynamic>).map(
-      (k, e) => MapEntry(k, e as Object),
-    )
+    ..ACL = json['ACL'] as Map<String, dynamic>
     ..title = json['title'] as String
     ..content = json['content'] as String
     ..author = BmobUser.fromJson(json['author'] as Map<String, dynamic>)

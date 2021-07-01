@@ -15,13 +15,13 @@ BmobQuery<T> _$BmobQueryFromJson<T>(Map<String, dynamic> json) {
     ..count = json['count'] as int
     ..c = json['c'] as String
     ..where = json['where'] as Map<String, dynamic>
-    ..having = json['having'] as Map<String, dynamic>
-    ..groupby = json['groupby'] as String
-    ..sum = json['sum'] as String
-    ..average = json['average'] as String
-    ..max = json['max'] as String
-    ..min = json['min'] as String
-    ..groupcount = json['groupcount'] as bool;
+    ..having = json['having'] as Map<String, dynamic>?
+    ..groupby = json['groupby'] as String?
+    ..sum = json['sum'] as String?
+    ..average = json['average'] as String?
+    ..max = json['max'] as String?
+    ..min = json['min'] as String?
+    ..groupcount = json['groupcount'] as bool?;
 }
 
 Map<String, dynamic> _$BmobQueryToJson<T>(BmobQuery<T> instance) =>

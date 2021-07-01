@@ -8,10 +8,10 @@ part of change;
 
 Change _$ChangeFromJson(Map<String, dynamic> json) {
   return Change()
-    ..appKey = json['appKey'] as String
-    ..tableName = json['tableName'] as String
-    ..objectId = json['objectId'] as String
-    ..action = json['action'] as String
+    ..appKey = json['appKey'] as String?
+    ..tableName = json['tableName'] as String?
+    ..objectId = json['objectId'] as String?
+    ..action = json['action'] as String?
     ..data = json['data'] as Map<String, dynamic>;
 }
 
