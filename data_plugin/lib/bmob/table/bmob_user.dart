@@ -50,8 +50,8 @@ class BmobUser extends BmobObject {
     //Map转String
     String params = json.encode(data);
     //发送请求
-    String responseData = await BmobDio.getInstance().post(Bmob.BMOB_API_USERS, data: params);
-    BmobRegistered bmobRegistered = BmobRegistered.fromJson(json.decode(responseData));
+    Map<String, dynamic> responseData = await BmobDio.getInstance().post(Bmob.BMOB_API_USERS, data: params);
+    BmobRegistered bmobRegistered = BmobRegistered.fromJson(responseData);
     BmobDio.getInstance().setSessionToken(bmobRegistered.sessionToken);
     return bmobRegistered;
   }
